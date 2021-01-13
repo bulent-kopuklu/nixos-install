@@ -67,12 +67,10 @@ truncate -s 0 $SWAPFILE
 chattr +C $SWAPFILE
 btrfs property set $SWAPFILE compression none
 chmod 0600 $SWAPFILE
-fallocate -l 4G $SWAPFILE
+fallocate -l 18G $SWAPFILE
 mkswap $SWAPFILE
 swapon $SWAPFILE
 
 free
-
-nixos-generate-config --root /mnt
 
 

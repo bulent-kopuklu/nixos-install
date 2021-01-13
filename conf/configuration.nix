@@ -14,8 +14,8 @@
 
     users.users.bulentk = {
         isNormalUser = true;
-        extraGroups  = [ "docker" "networkmanager" "wheel" ]; # wheel for ‘sudo’.
-        shell        = pkgs.fish;
+        extraGroups = [ "docker" "networkmanager" "wheel" "vboxusers" ];
+        shell = pkgs.fish;
     };    
 
     programs = {

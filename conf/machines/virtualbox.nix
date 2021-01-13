@@ -13,9 +13,5 @@
         size = 4096;
     }];
 
-    users.extraGroups.vboxusers.members = [
-        "bulentk" 
-    ];
-    
     virtualisation.virtualbox.guest.enable = true;
 }

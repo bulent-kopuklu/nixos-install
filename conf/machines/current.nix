@@ -1,1 +1,1 @@
-/home/nixos/nixos-install/conf/machines/virtualbox.nix
+lenovox1.nix
