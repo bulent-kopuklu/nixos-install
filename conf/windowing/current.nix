@@ -1,0 +1,1 @@
+/home/nixos/nixos-install/conf/windowing/i3.nix

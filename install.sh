@@ -5,7 +5,7 @@ DRIVE=/dev/sda
 
 sgdisk --zap-all $DRIVE
 parted /dev/sda -- mklabel gpt
-sgdisk --clear --new=1:0:+512MiB --typecode=1:ef00 --change-name=1:BOOT --new=2:0:0 --typecode=2:8309 --change-name=2:cryptsystem $DRIVE
+sgdisk --clear --new=1:0:+1GiB --typecode=1:ef00 --change-name=1:BOOT --new=2:0:0 --typecode=2:8309 --change-name=2:cryptsystem $DRIVE
 
 sleep 1
 
@@ -14,6 +14,7 @@ mkfs.fat -F32 -n BOOT /dev/disk/by-partlabel/BOOT
 
 cryptsetup luksFormat --align-payload=8192 -s 256 -c aes-xts-plain64 /dev/disk/by-partlabel/cryptsystem
 cryptsetup open /dev/disk/by-partlabel/cryptsystem system
+
 
 mkfs.btrfs --force --label system /dev/mapper/system
 
@@ -66,7 +67,7 @@ truncate -s 0 $SWAPFILE
 chattr +C $SWAPFILE
 btrfs property set $SWAPFILE compression none
 chmod 0600 $SWAPFILE
-fallocate -l 18G $SWAPFILE
+fallocate -l 4G $SWAPFILE
 mkswap $SWAPFILE
 swapon $SWAPFILE
 
