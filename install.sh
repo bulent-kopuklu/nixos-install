@@ -6,16 +6,17 @@ echo "starting " $sys "..."
 
 case $sys in
     thinkpad-x1 | i5-desktop)
-        source "sys/luks-btrfs.sh" $swapsize
+        source "sys/luks-btrfs.sh"
         ;;
     rp3-homegw)
         echo "sys/raspberry.sh"
         ;;
     virtualbox)
-        echo "sys/virtual.sh" $swapsize
+        source "sys/virtual.sh"
         ;;
     *)
         echo "unknow"
+        exit
         ;;
 esac
 
