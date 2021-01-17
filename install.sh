@@ -20,6 +20,8 @@ case $sys in
         ;;
 esac
 
+nixos-generate-config --root /mnt
+
 git clone https://github.com/bulent-kopuklu/nixos-config.git /mnt/etc/nixos-config
 ln -s /mnt/etc/nixos/nixos-config/sys/$sys /mnt/etc/nixos/nixos-config/sys/current
 
