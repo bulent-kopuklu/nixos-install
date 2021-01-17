@@ -3,11 +3,12 @@
 drive=/dev/sda
 
 sgdisk --zap-all $drive
-parted $drive -- mklabel gpt
-sgdisk --clear --new=1:0:0 --typecode=1:8300 --change-name=1:nixos $drive
+
+parted $drive -- mklabel msdos
+parted $drive -- mkpart primary 1MiB 100%
 
 sleep 1
 
-mkfs.ext4 -L nixos /dev/disk/by-partlabel/nixos
-mount LABEL=nixos /mnt
+mkfs.ext4 -L nixos /dev/sda1
+mount /dev/sda1 /mnt
 
