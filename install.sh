@@ -5,7 +5,7 @@ sys=$1
 echo "starting " $sys "..."
 
 case $sys in
-    thinkpadx1-4th | i5-desktoppc)
+    thinkpadx1-4th | i5-desktoppc | asus-g14)
         source "sys/luks-btrfs.sh"
         ;;
     rp3-homegw)
