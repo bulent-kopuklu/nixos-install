@@ -1,9 +1,9 @@
 #! /run/current-system/sw/bin/bash
 
-drive=/dev/sda
+drive=/dev/nvme0n1
 
 sgdisk --zap-all $drive
-parted /dev/sda -- mklabel gpt
+parted $drive -- mklabel gpt
 sgdisk --clear --new=1:0:+1GiB --typecode=1:ef00 --change-name=1:BOOT --new=2:0:0 --typecode=2:8309 --change-name=2:cryptsystem $drive
 
 sleep 1
@@ -60,7 +60,7 @@ mkdir -p /mnt/boot
 mount LABEL=BOOT /mnt/boot
 
 swapfile=/mnt/var/.swapfile
-
+swapsize=19327352832
 truncate -s 0 $swapfile
 chattr +C $swapfile
 btrfs property set $swapfile compression none
