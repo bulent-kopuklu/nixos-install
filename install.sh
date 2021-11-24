@@ -26,8 +26,8 @@ esac
 #nixos-generate-config --root /mnt
 
 git clone https://github.com/bulent-kopuklu/nixos-config.git /mnt/etc/nixos/config
-ln -s /mnt/etc/nixos/config/sys/$sys.nix /mnt/etc/nixos/config/sys/current.nix
-ln -s /mnt/etc/configuration.nix /mnt/etc/nixos/configuration.nix
+ln -s /mnt/etc/nixos/config/sys/$sys /mnt/etc/nixos/config/sys/current
+ln -s /mnt/etc/configuration.nix /mnt/etc/nixos/config/configuration.nix
 
 
 

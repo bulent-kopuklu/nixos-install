@@ -3,9 +3,9 @@
 : ${DRIVER:=/dev/nvme0n1}
 : ${SWAP_FILE_SIZE:=19327352832}
 
-source ./luks-btrfs.sh
+source $(pwd)/sys/luks-btrfs.sh
 
-mkpart $DIRIVER
+mkpart $DRIVER
 mkenc
 mkfs
 mkswapfile $SWAP_FILE_SIZE
