@@ -9,7 +9,7 @@ case $sys in
         source "sys/luks-btrfs.sh"
         ;;
     asus-g14)
-        source "asus-g14.sh"
+        source "sys/asus-g14.sh"
         ;;
     rp3-homegw)
         echo "sys/raspberry.sh"
