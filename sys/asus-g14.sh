@@ -10,6 +10,6 @@ mkenc
 mkfs
 mkswapfile $SWAP_FILE_SIZE
 
-sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
-sudo nix-channel --update
+#sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
+#sudo nix-channel --update
 
