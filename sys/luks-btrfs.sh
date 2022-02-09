@@ -27,12 +27,10 @@ function mkfs() {
 
   btrfs subvolume create /mnt/@
   btrfs subvolume create /mnt/@home
-  btrfs subvolume create /mnt/@log
-  btrfs subvolume create /mnt/@docker
+  btrfs subvolume create /mnt/@var
   btrfs subvolume create /mnt/@nix
   btrfs subvolume create /mnt/@snapshots
-  btrfs subvolume create /mnt/@srv
-  btrfs subvolume create /mnt/@machine
+  
 
   umount -R /mnt
 
@@ -45,20 +43,11 @@ function mkfs() {
   mkdir -p /mnt/home
   mount -t btrfs -o subvol=@home,$o_btrfs LABEL=$MAPPER_LABEL /mnt/home
 
-  mkdir -p /mnt/srv
-  mount -t btrfs -o subvol=@srv,$o_btrfs LABEL=$MAPPER_LABEL /mnt/srv
+  mkdir -p /mnt/var
+  mount -t btrfs -o subvol=@var,$o_btrfs LABEL=$MAPPER_LABEL /mnt/var
 
   mkdir -p /mnt/nix
   mount -t btrfs -o subvol=@nix,$o_btrfs LABEL=$MAPPER_LABEL /mnt/nix
-
-  mkdir -p /mnt/var/log
-  mount -t btrfs -o subvol=@log,$o_btrfs LABEL=$MAPPER_LABEL /mnt/var/log
-
-  mkdir -p /mnt/var/lib/docker
-  mount -t btrfs -o subvol=@docker,$o_btrfs LABEL=$MAPPER_LABEL /mnt/var/lib/docker
-
-  mkdir -p /mnt/var/lib/machine
-  mount -t btrfs -o subvol=@machine,$o_btrfs LABEL=$MAPPER_LABEL /mnt/var/lib/machine
 
   mkdir -p /mnt/.snapshots
   mount -t btrfs -o subvol=@snapshots,$o_btrfs LABEL=$MAPPER_LABEL /mnt/.snapshots
